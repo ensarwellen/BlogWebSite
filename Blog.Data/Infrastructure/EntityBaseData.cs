@@ -169,7 +169,7 @@ namespace Blog.Data.Infrastructure
                 T aModel = _context.Set<T>().Where(x => x.Id == id).FirstOrDefault();
                 return aModel;
             }
-            catch (Exception exc
+            catch (Exception exc)
             {
                 return null;
             }
@@ -297,6 +297,11 @@ namespace Blog.Data.Infrastructure
             {
                 return new DataResult(false, exc.Message + exc.InnerException == null ? "" : "(" + exc.InnerException + ")");
             }
+        }
+
+        public T FirstOrDefault(Expression<Func<T, bool>> presicate, string orderBy = "Id", bool isDesc = false)
+        {
+            throw new NotImplementedException();
         }
     }
 }
