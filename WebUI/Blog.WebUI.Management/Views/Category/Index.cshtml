@@ -1,0 +1,51 @@
+﻿@model List<Blog.Model.Category>
+@{
+    ViewBag.Title = "Kategoriler";
+}
+<div class="container-fluid">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Kategoriler</h1>
+        <a href="@Url.Action("Add","Category")" class="btn btn-sm btn-primary shadow-sm">Yeni Kategori Ekle</a>
+    </div>
+    <p class="mb-4">
+         Burada kategoriler listelenebilir.              
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Kayıtlı Kategoriler</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Kategori Adı</th>
+                            <th>IsActive</th>
+                            <th>.</th>
+                        </tr>
+                    </thead>                  
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@Html.Raw(item.IsActive ? "Aktif" : "Pasif")</td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Category", new {id=item.Id})" class="btn btn-primary">Düzenle</a>
+                                    <a href="@Url.Action("Delete", "Category", new {id=item.Id})"class="btn btn-danger">Sil</a>
+
+                                </td>
+                            </tr>
+                        }
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

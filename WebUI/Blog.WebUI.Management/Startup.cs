@@ -1,4 +1,6 @@
+using Blog.Data;
 using Blog.Data.Infrastructure.Entities;
+using Blog.WebUI.Infrastructure.Cache;
 using Blog.WebUI.Infrastructure.Rules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,10 +50,19 @@ namespace Blog.WebUI.Management
             services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
             services.AddOptions();
 
+            //cache
+            services.AddMemoryCache();
+            services.AddTransient<ICache, Blog.Infrastructure.Caching.Memory.Cache>();
+            services.AddTransient<CacheHelper>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
+
+            //Data
+            services.AddTransient<CategoryData>();
+
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddMvc(x =>
             {
