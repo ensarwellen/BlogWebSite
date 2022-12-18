@@ -62,6 +62,8 @@ namespace Blog.WebUI.Management
 
             //Data
             services.AddTransient<CategoryData>();
+            services.AddTransient<ContentData>();
+            services.AddTransient<MediaData>();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddMvc(x =>

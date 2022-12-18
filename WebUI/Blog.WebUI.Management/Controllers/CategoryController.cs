@@ -78,6 +78,7 @@ namespace Blog.WebUI.Management.Controllers
                 return View(category);
             }
 
+            //Girilen değerler, sistemde kayıtlı olan kategoriye eşit mi?
             var exist_category = _categoryData.GetBy(x => x.Slug == category.Slug && !x.IsDeleted && x.Id != category.Id).FirstOrDefault();
             if(exist_category != null)
             {

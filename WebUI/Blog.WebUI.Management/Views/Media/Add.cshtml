@@ -1,0 +1,38 @@
+﻿@model Blog.Model.Media
+@{
+    ViewBag.Title = "Media Ekle";
+}
+<div class="container-fluid">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Media Ekle</h1>
+        <a href="@Url.Action("Index","Media")" class="btn btn-sm btn-primary shadow-sm">Listeye Dön</a>
+    </div>
+    <p class="mb-4">
+        Burada yeni media eklenebilir
+    </p>
+    @Html.Raw(ViewResultExtension.ViewResult(ViewBag.Result))
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form action="/Media/Add" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" placeholder="Title" name="Title" value="@Model.Title">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" placeholder="Alt" name="Alt" value="@Model.Alt">
+                </div>
+                <div class="form-group">
+                    <input type="file" class="form-control form-control-user" name="file">
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Ekle</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+</div>
