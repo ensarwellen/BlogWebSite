@@ -21,6 +21,9 @@ namespace Blog.Data
         public DbSet<Model.Media> Medias { get; set; }
         public DbSet<Model.Tag> Tags { get; set; }
         public DbSet<Model.Setting> Setting { get; set; }
+        public DbSet<Model.Role> Roles { get; set; }
+        public DbSet<Model.RolePage> RolePages { get; set; }
+
 
 
 
@@ -36,6 +39,8 @@ namespace Blog.Data
             builder.Entity<Model.Media>(entity => entity.ToTable("bl_medias"));
             builder.Entity<Model.Tag>(entity => entity.ToTable("bl_tags"));
             builder.Entity<Model.Setting>(entity => entity.ToTable("bl_setting"));
+            builder.Entity<Model.Role>(entity => entity.ToTable("bl_roles"));
+            builder.Entity<Model.RolePage>(entity => entity.ToTable("bl_role_pages"));
 
 
 

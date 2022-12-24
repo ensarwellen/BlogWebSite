@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Rewrite;
+using Blog.Data;
+using Blog.WebUI.Infrastructure.Cache;
 
 namespace Blog.WebUI.Site
 {
@@ -47,6 +49,23 @@ namespace Blog.WebUI.Site
             //config
             services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
             services.AddOptions();
+
+            //cache
+            services.AddMemoryCache();
+            services.AddTransient<ICache, Blog.Infrastructure.Caching.Memory.Cache>();
+            services.AddTransient<CacheHelper>();
+
+            //Data
+            services.AddTransient<CategoryData>();
+            services.AddTransient<ContentData>();
+            services.AddTransient<ContentCategoryData>();
+            services.AddTransient<MediaData>();
+            services.AddTransient<AuthorData>();
+            services.AddTransient<SettingData>();
+            services.AddTransient<TagData>();
+            services.AddTransient<ContentTagData>();
+            services.AddTransient<RolePageData>();
+            services.AddTransient<RoleData>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -84,6 +103,8 @@ namespace Blog.WebUI.Site
             {
                 routes.MapRoute(name: "category", template: "kategori/{slug}", defaults: new { controller = "Category", action = "Index", page = 1 });
                 routes.MapRoute(name: "categoryWithPage", template: "kategori/{slug}/sayfa/{page}", defaults: new { controller = "Category", action = "Index", page = 1 });
+                routes.MapRoute(name: "content", template: "{slug}", defaults: new { controller = "Content", action = "Index" });
+
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
             });
         }

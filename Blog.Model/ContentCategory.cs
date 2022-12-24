@@ -6,6 +6,9 @@ namespace Blog.Model
 {
     public class ContentCategory : Core.ModelBase
     {
+        public ContentCategory()
+        {
+        }
         public ContentCategory(int contentId, int categoryId)
         {
             CategoryId = categoryId;

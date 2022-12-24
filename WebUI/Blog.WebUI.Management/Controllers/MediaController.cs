@@ -1,4 +1,5 @@
 ﻿using Blog.Data;
+using Blog.WebUI.Management.Authorize;
 using Blog.WebUI.Management.Helpers;
 using Blog.WebUI.Management.Models;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Blog.WebUI.Management.Controllers
 {
+    [Authorize]
     public class MediaController:Controller
     {
         MediaData _mediaData;

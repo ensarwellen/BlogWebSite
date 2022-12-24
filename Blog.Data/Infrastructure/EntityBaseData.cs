@@ -70,8 +70,19 @@ namespace Blog.Data.Infrastructure
 
             }
         }
+        public DataResult DeleteBulk(Expression<Func<T, bool>> predicate)
+        {
+            var list = _context.Set<T>().Where(predicate);
+            foreach (var item in list)
+            {
+                _context.Set<T>().Remove(item);
+            }
 
-        
+            _context.SaveChanges();
+            return new DataResult(true, "");
+        }
+
+
 
         public T FirstOrDefault(Expression<Func<T, bool>> predicate, bool asNoTracking = false)
         {

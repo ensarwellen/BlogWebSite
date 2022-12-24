@@ -1,4 +1,5 @@
 ﻿using Blog.Data;
+using Blog.WebUI.Management.Authorize;
 using Blog.WebUI.Management.Helpers;
 using Blog.WebUI.Management.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Blog.WebUI.Management.Controllers
 {
+    [Authorize]
     public class CategoryController:Controller
     {
         CategoryData _categoryData;

@@ -11,7 +11,12 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Blog.Data\Blog.Data.csproj" />
     <ProjectReference Include="..\..\Blog.Model\Blog.Model.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Caching\Blog.Infrastructure.Caching.Memory\Blog.Infrastructure.Caching.Memory.csproj" />
     <ProjectReference Include="..\Blog.WebUI.Infrastructure\Blog.WebUI.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Blog\" />
   </ItemGroup>
 
 </Project>

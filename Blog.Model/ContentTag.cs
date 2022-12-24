@@ -6,6 +6,9 @@ namespace Blog.Model
 {
     public class ContentTag : Core.ModelBase
     {
+        public ContentTag()
+        {
+        }
         public ContentTag(int contentId, int tagId)
         {
             TagId = tagId;
